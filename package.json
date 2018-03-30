@@ -1,6 +1,6 @@
 {
-  "name": "reconnecting-websocket",
-  "version": "3.2.2",
+  "name": "rws-ssl",
+  "version": "1.1.1",
   "description": "Reconnecting WebSocket",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -10,21 +10,13 @@
     "test": "nyc --reporter=text-summary --reporter=lcov ava --verbose --serial test/test.js",
     "clean": "rimraf dist",
     "report": "nyc report --reporter=html && opn coverage/index.html",
-    "prepublish": "npm run clean && npm run build && npm run build-amd && npm test",
+    "prepublish": "npm run clean && npm run build && npm run build-amd",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "keywords": [
-    "websocket",
-    "client",
-    "reconnecting",
-    "reconnection",
-    "reconnect",
-    "forever",
-    "persistent",
-    "forever",
-    "automatic"
+    "personal"
   ],
-  "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
+  "author": "Will Austin <waustin429@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.22.0",

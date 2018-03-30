@@ -41,6 +41,7 @@ const getDefaultOptions = () => <Options>({
     connectionTimeout: 4000,
     maxRetries: Infinity,
     debug: false,
+    rejectUnauthorized: true
 });
 
 const bypassProperty = (src: any, dst: any, name: string) => {
@@ -150,7 +151,7 @@ const ReconnectingWebsocket = function(
         log('connect');
         const oldWs = ws;
         const wsUrl = (typeof url === 'function') ? url() : url;
-        ws = new (<any>config.constructor)(wsUrl, protocols);
+        ws = new (<any>config.constructor)(wsUrl, protocols, {rejectUnauthorized: options.rejectUnauthorized});
 
         connectingTimeout = setTimeout(() => {
             log('timeout');
