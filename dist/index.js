@@ -16,6 +16,7 @@ var getDefaultOptions = function () { return ({
     connectionTimeout: 4000,
     maxRetries: Infinity,
     debug: false,
+    rejectUnauthorized: true
 }); };
 var bypassProperty = function (src, dst, name) {
     Object.defineProperty(dst, name, {
@@ -120,7 +121,7 @@ var ReconnectingWebsocket = function (url, protocols, options) {
         log('connect');
         var oldWs = ws;
         var wsUrl = (typeof url === 'function') ? url() : url;
-        ws = new config.constructor(wsUrl, protocols);
+        ws = new config.constructor(wsUrl, protocols, {rejectUnauthorized: options.rejectUnauthorized});
         connectingTimeout = setTimeout(function () {
             log('timeout');
             ws.close();
